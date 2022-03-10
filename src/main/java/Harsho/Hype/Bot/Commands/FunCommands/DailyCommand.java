@@ -6,7 +6,7 @@ import Harsho.Hype.Bot.Storage;
 import Harsho.Hype.Bot.TimeCalculator;
 import Harsho.Hype.Bot.MySQL.GetData;
 import Harsho.Hype.Bot.MySQL.UpdateData;
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 public class DailyCommand extends ListenerAdapter {
@@ -17,7 +17,7 @@ public class DailyCommand extends ListenerAdapter {
     }
 
     @Override
-    public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
+    public void onMessageReceived(MessageReceivedEvent event) {
         if (event.getAuthor().isBot())
             return;
         String[] message = event.getMessage().getContentRaw().split("\\s+");

@@ -33,7 +33,7 @@
     <dependency>
       <groupId>com.github.DV8FromTheWorld</groupId>
       <artifactId>JDA</artifactId>
-      <version>v4.4.0</version>
+      <version>v5.0.0-alpha.9</version>
     </dependency>
     <dependency>
       <groupId>org.json</groupId>

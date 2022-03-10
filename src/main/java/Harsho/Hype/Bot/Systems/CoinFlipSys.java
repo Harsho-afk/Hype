@@ -8,7 +8,7 @@ import Harsho.Hype.Bot.MySQL.UpdateData;
 import Harsho.Hype.Bot.MySQL.GetData;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public class CoinFlipSys {
     public static CoinFlipSys INSTANCE;
@@ -19,7 +19,7 @@ public class CoinFlipSys {
         this.coinFlipManagers = new HashMap<>();
     }
 
-    public static String coinFlipSys(Member member, String[] message, GuildMessageReceivedEvent event) {
+    public static String coinFlipSys(Member member, String[] message, MessageReceivedEvent event) {
         CoinFlipSys.INSTANCE.coinFlipManagers.put(member.getGuild(), member.getIdLong());
         Random rand = new Random();
         int random = rand.nextInt(2);

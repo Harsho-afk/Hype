@@ -3,7 +3,7 @@ package Harsho.Hype.Bot.Commands.FunCommands;
 import Harsho.Hype.Bot.MySQL.GetData;
 import Harsho.Hype.Bot.Storage;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
@@ -22,7 +22,7 @@ public class MemeCommand extends ListenerAdapter {
     }
 
     @Override
-    public void onGuildMessageReceived(@NotNull GuildMessageReceivedEvent event) {
+    public void onMessageReceived(@NotNull MessageReceivedEvent event) {
         if (event.getAuthor().isBot())
             return;
         String[] message = event.getMessage().getContentRaw().split("\\s+");
@@ -57,7 +57,7 @@ public class MemeCommand extends ListenerAdapter {
                     nsfw = jsonObject.getBoolean("nsfw");
                     spoiler = jsonObject.getBoolean("spoiler");
                     if (!spoiler) {
-                        if (event.getChannel().isNSFW() && !nsfw) {
+                        if (event.getTextChannel().isNSFW() && !nsfw) {
                             embedBuilder.setTitle(title, postLink);
                             embedBuilder.setAuthor("by " + author);
                             embedBuilder.setColor(Color.RED);
@@ -65,9 +65,9 @@ public class MemeCommand extends ListenerAdapter {
                             embedBuilder.setImage(image);
                             event.getChannel().sendMessageEmbeds(embedBuilder.build()).queue();
                             embedBuilder.clear();
-                        } else if (!event.getChannel().isNSFW() && nsfw) {
+                        } else if (!event.getTextChannel().isNSFW() && nsfw) {
                             event.getChannel().sendMessage("Try again").queue();
-                        } else if (event.getChannel().isNSFW() && nsfw) {
+                        } else if (event.getTextChannel().isNSFW() && nsfw) {
                             embedBuilder.setTitle(title, postLink);
                             embedBuilder.setAuthor("by " + author);
                             embedBuilder.setColor(Color.RED);
@@ -75,7 +75,7 @@ public class MemeCommand extends ListenerAdapter {
                             embedBuilder.setImage(image);
                             event.getChannel().sendMessageEmbeds(embedBuilder.build()).queue();
                             embedBuilder.clear();
-                        } else if (!event.getChannel().isNSFW() && !nsfw) {
+                        } else if (!event.getTextChannel().isNSFW() && !nsfw) {
                             embedBuilder.setTitle(title, postLink);
                             embedBuilder.setAuthor("by " + author);
                             embedBuilder.setColor(Color.RED);
