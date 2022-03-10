@@ -15,7 +15,7 @@ import java.util.Collection;
 public class SetEventsCommand extends ListenerAdapter {
     private static String prefix;
 
-    public static String help() {
+    public static String help(String prefix) {
         return prefix
                 + "events {'all' or event name} {'true' or 'false'} - Enables or disables event message in log channel.\n Events - MemberJoin and MemberLeave.";
     }

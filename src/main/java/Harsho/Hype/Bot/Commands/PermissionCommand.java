@@ -12,7 +12,7 @@ import java.awt.*;
 public class PermissionCommand extends ListenerAdapter {
     private static String prefix;
 
-    public static String help() {
+    public static String help(String prefix) {
         return prefix + "perm - Shows what permission is needed for commands.";
     }
 

@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 public class CoinFlipCommand extends ListenerAdapter {
     private static String prefix;
 
-    public static String help() {
+    public static String help(String prefix) {
         return prefix + "cf [heads or tails] [amount] - heads or tails.";
     }
 

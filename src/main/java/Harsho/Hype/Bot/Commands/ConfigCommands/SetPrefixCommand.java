@@ -15,7 +15,7 @@ import java.util.Collection;
 public class SetPrefixCommand extends ListenerAdapter {
     private static String prefix;
 
-    public static String help() {
+    public static String help(String prefix) {
         return prefix + "setprefix {new prefix} - sets a custom prefix.";
     }
 

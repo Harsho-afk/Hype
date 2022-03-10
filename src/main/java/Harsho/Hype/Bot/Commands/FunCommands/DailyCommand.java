@@ -12,7 +12,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 public class DailyCommand extends ListenerAdapter {
     private static String prefix;
 
-    public static String help() {
+    public static String help(String prefix) {
         return prefix + "daily - gives you daily reward.";
     }
 

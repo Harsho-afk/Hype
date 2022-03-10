@@ -13,7 +13,7 @@ import java.awt.*;
 public class AvatarCommand extends ListenerAdapter {
     private static String prefix;
 
-    public static String help() {
+    public static String help(String prefix) {
         return prefix + "ava [user] - sends avatar of the mentioned user or of yourself.";
     }
 

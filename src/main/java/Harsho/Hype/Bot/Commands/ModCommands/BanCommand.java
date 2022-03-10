@@ -15,7 +15,7 @@ import java.util.Objects;
 public class BanCommand extends ListenerAdapter {
     private static String prefix;
 
-    public static String help() {
+    public static String help(String prefix) {
         return prefix + "ban {user} [reason] - bans the mentioned user.";
     }
 

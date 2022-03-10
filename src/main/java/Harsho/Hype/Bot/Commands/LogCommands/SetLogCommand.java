@@ -16,7 +16,7 @@ import java.util.Collection;
 public class SetLogCommand extends ListenerAdapter {
     private static String prefix;
 
-    public static String help() {
+    public static String help(String prefix) {
         return prefix + "setlog {log channel} - sets log channel.";
     }
 

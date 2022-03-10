@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 public class PingCommand extends ListenerAdapter {
     private static String prefix;
 
-    public static String help() {
+    public static String help(String prefix) {
         return prefix + "ping - You know what it does.";
     }
 

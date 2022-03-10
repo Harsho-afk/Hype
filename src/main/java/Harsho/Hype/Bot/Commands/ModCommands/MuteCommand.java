@@ -19,7 +19,7 @@ import java.util.*;
 public class MuteCommand extends ListenerAdapter {
     private static String prefix;
 
-    public static String help() {
+    public static String help(String prefix) {
         return prefix + "mute {member} {minutes} [reason] - mutes the mentioned member.";
     }
 

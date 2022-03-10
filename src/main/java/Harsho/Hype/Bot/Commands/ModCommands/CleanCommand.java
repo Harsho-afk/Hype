@@ -16,7 +16,7 @@ import java.util.List;
 public class CleanCommand extends ListenerAdapter {
     private static String prefix;
 
-    public static String help() {
+    public static String help(String prefix) {
         return prefix + "clean || " + prefix + "purge [Number of messages] - Deletes the number of message mentioned.";
     }
 

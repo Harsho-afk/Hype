@@ -16,7 +16,7 @@ import java.util.Objects;
 public class RemoveLogCommand extends ListenerAdapter {
     private static String prefix;
 
-    public static String help() {
+    public static String help(String prefix) {
         return prefix + "removelog - stops sending log to the log channel.";
     }
 

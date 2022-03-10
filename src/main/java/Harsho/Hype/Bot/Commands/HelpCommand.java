@@ -16,7 +16,7 @@ import java.awt.*;
 public class HelpCommand extends ListenerAdapter {
         private static String prefix;
 
-        public static String help() {
+        public static String help(String prefix) {
                 return prefix + "help - shows all commands.";
         }
 
@@ -31,20 +31,20 @@ public class HelpCommand extends ListenerAdapter {
                 if (message[0].equalsIgnoreCase(prefix + "help")) {
                         EmbedBuilder embedBuilder = new EmbedBuilder();
                         embedBuilder.setTitle("Command List");
-                        embedBuilder.setDescription(HelpCommand.help() + "\n" + AvatarCommand.help() + "\n"
-                                        + PingCommand.help() + "\n" + PermissionCommand.help());
+                        embedBuilder.setDescription(HelpCommand.help(prefix) + "\n" + AvatarCommand.help(prefix) + "\n"
+                                        + PingCommand.help(prefix) + "\n" + PermissionCommand.help(prefix));
                         embedBuilder.addField("Fun Commands",
-                                        CatCommand.help() + "\n" + CoinFlipCommand.help() + "\n" + DogCommand.help()
-                                                        + "\n" + MemeCommand.help() + "\n" + CashCommand.help() + "\n"
-                                                        + GiveCashCommand.help() + "\n" + DailyCommand.help(),
+                                        CatCommand.help(prefix) + "\n" + CoinFlipCommand.help(prefix) + "\n" + DogCommand.help(prefix)
+                                                        + "\n" + MemeCommand.help(prefix) + "\n" + CashCommand.help(prefix) + "\n"
+                                                        + GiveCashCommand.help(prefix) + "\n" + DailyCommand.help(prefix),
                                         false);
-                        embedBuilder.addField("Log Commands", SetLogCommand.help() + "\n" + RemoveLogCommand.help()
-                                        + "\n" + SetEventsCommand.help(), false);
+                        embedBuilder.addField("Log Commands", SetLogCommand.help(prefix) + "\n" + RemoveLogCommand.help(prefix)
+                                        + "\n" + SetEventsCommand.help(prefix), false);
                         embedBuilder.addField("Mod Commands",
-                                        BanCommand.help() + "\n" + KickCommand.help() + "\n" + CleanCommand.help()
-                                                        + "\n" + MuteCommand.help() + "\n" + UnMuteCommand.help(),
+                                        BanCommand.help(prefix) + "\n" + KickCommand.help(prefix) + "\n" + CleanCommand.help(prefix)
+                                                        + "\n" + MuteCommand.help(prefix) + "\n" + UnMuteCommand.help(prefix),
                                         false);
-                        embedBuilder.addField("Config Commands", SetPrefixCommand.help(), false);
+                        embedBuilder.addField("Config Commands", SetPrefixCommand.help(prefix), false);
                         embedBuilder.setColor(Color.RED);
                         event.getChannel().sendMessageEmbeds(embedBuilder.build()).queue();
                         embedBuilder.clear();

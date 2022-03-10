@@ -17,7 +17,7 @@ public class MemeCommand extends ListenerAdapter {
 
     private static String prefix;
 
-    public static String help() {
+    public static String help(String prefix) {
         return prefix + "meme - sends a random meme.";
     }
 

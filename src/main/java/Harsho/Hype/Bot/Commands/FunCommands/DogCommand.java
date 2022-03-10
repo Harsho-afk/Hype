@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class DogCommand extends ListenerAdapter {
     private static String prefix;
 
-    public static String help() {
+    public static String help(String prefix) {
         return prefix + "dog - sends a random dog pic.";
     }
 
