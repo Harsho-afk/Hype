@@ -2,7 +2,7 @@ package Harsho.Hype.Bot;
 
 import java.sql.Timestamp;
 
-public class TimeCalculator {
+public class TimeConverter {
     public static String diffHours(Timestamp lastTimestamp, Timestamp finalTimestamp) {
         long lastTime = lastTimestamp.getTime();
         long finalTime = finalTimestamp.getTime();

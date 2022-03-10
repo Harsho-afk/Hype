@@ -3,7 +3,7 @@ package Harsho.Hype.Bot.Commands.FunCommands;
 import java.sql.Timestamp;
 
 import Harsho.Hype.Bot.Storage;
-import Harsho.Hype.Bot.TimeCalculator;
+import Harsho.Hype.Bot.TimeConverter;
 import Harsho.Hype.Bot.MySQL.GetData;
 import Harsho.Hype.Bot.MySQL.UpdateData;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -37,7 +37,7 @@ public class DailyCommand extends ListenerAdapter {
             } else {
                 event.getChannel()
                         .sendMessageFormat("Come after %s. Streak - %d",
-                                TimeCalculator.diffHours(GetData.getTime(event.getMember().getIdLong()),
+                                TimeConverter.diffHours(GetData.getTime(event.getMember().getIdLong()),
                                         new Timestamp(System.currentTimeMillis())),
                                 GetData.getStreak(event.getMember().getIdLong()))
                         .queue();
