@@ -11,11 +11,12 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.events.GenericEvent;
 import net.dv8tion.jda.api.events.ReadyEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nonnull;
 
 public class Listener extends ListenerAdapter {
     @Override
-    public void onGenericEvent(@NotNull GenericEvent event) {
+    public void onGenericEvent(@Nonnull GenericEvent event) {
         if (event instanceof ReadyEvent) {
             JDA jdaBuilder = event.getJDA();
             // commands
