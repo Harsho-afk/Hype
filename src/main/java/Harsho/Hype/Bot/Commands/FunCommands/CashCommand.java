@@ -30,7 +30,7 @@ public class CashCommand extends ListenerAdapter {
                         GetData.getAmount(Objects.requireNonNull(event.getMember()).getIdLong())).queue();
                 return;
             }
-            Member member = event.getMessage().getMentionedMembers().get(0);
+            Member member = event.getMessage().getMentions().getMembers().get(0);
             if (member == null) {
                 event.getChannel().sendMessageFormat("You have %d cash",
                         GetData.getAmount(Objects.requireNonNull(event.getMember()).getIdLong())).queue();

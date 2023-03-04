@@ -5,9 +5,8 @@ import Harsho.Hype.Bot.MySQL.GetData;
 import Harsho.Hype.Bot.Storage;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
-import net.dv8tion.jda.api.events.ReadyEvent;
+import net.dv8tion.jda.api.events.session.ReadyEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import org.jetbrains.annotations.NotNull;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +18,7 @@ import java.util.Objects;
 public class BotReadyEvent extends ListenerAdapter {
 
     @Override
-    public void onReady(@NotNull ReadyEvent event) {
+    public void onReady(ReadyEvent event) {
         List<Guild> guilds = event.getJDA().getGuilds();
         long guildID = 0;
         // guilds members name

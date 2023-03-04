@@ -27,7 +27,7 @@ public class MemeCommand extends ListenerAdapter {
         boolean nsfw = false, spoiler = false;
         EmbedBuilder embedBuilder = new EmbedBuilder();
         try {
-            URL url = new URL("https://meme-api.herokuapp.com/gimme");
+            URL url = new URL("https://meme-api.com/gimme");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.connect();
@@ -50,7 +50,7 @@ public class MemeCommand extends ListenerAdapter {
                 nsfw = jsonObject.getBoolean("nsfw");
                 spoiler = jsonObject.getBoolean("spoiler");
                 if (!spoiler) {
-                    if (event.getTextChannel().isNSFW() && !nsfw) {
+                    if (event.getChannel().asTextChannel().isNSFW() && !nsfw) {
                         embedBuilder.setTitle(title, postLink);
                         embedBuilder.setAuthor("by " + author);
                         embedBuilder.setColor(Color.RED);
@@ -58,9 +58,9 @@ public class MemeCommand extends ListenerAdapter {
                         embedBuilder.setImage(image);
                         event.getChannel().sendMessageEmbeds(embedBuilder.build()).queue();
                         embedBuilder.clear();
-                    } else if (!event.getTextChannel().isNSFW() && nsfw) {
+                    } else if (!event.getChannel().asTextChannel().isNSFW() && nsfw) {
                         event.getChannel().sendMessage("Try again").queue();
-                    } else if (event.getTextChannel().isNSFW() && nsfw) {
+                    } else if (event.getChannel().asTextChannel().isNSFW() && nsfw) {
                         embedBuilder.setTitle(title, postLink);
                         embedBuilder.setAuthor("by " + author);
                         embedBuilder.setColor(Color.RED);
@@ -68,7 +68,7 @@ public class MemeCommand extends ListenerAdapter {
                         embedBuilder.setImage(image);
                         event.getChannel().sendMessageEmbeds(embedBuilder.build()).queue();
                         embedBuilder.clear();
-                    } else if (!event.getTextChannel().isNSFW() && !nsfw) {
+                    } else if (!event.getChannel().asTextChannel().isNSFW() && !nsfw) {
                         embedBuilder.setTitle(title, postLink);
                         embedBuilder.setAuthor("by " + author);
                         embedBuilder.setColor(Color.RED);

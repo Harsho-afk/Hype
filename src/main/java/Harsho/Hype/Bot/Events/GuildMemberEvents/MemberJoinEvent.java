@@ -1,6 +1,6 @@
 package Harsho.Hype.Bot.Events.GuildMemberEvents;
 
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 
@@ -16,7 +16,7 @@ public class MemberJoinEvent extends ListenerAdapter {
             return;
         if (!send)
             return;
-        TextChannel channel = event.getGuild().getTextChannelById(logID);
+        TextChannel channel = event.getGuild().getChannelById(null, logID);
         if (channel == null)
             return;
         String asMention = event.getMember().getAsMention();

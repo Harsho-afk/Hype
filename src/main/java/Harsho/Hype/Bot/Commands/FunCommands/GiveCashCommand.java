@@ -28,7 +28,7 @@ public class GiveCashCommand extends ListenerAdapter {
                 event.getChannel().sendMessage("Mention a user you want to send money to").queue();
                 return;
             }
-            Member member = event.getMessage().getMentionedMembers().get(0);
+            Member member = event.getMessage().getMentions().getMembers().get(0);
             if (member == null) {
                 event.getChannel().sendMessage("Mention a real user").queue();
                 return;

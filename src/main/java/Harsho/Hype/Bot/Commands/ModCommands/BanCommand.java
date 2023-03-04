@@ -36,7 +36,7 @@ public class BanCommand extends ListenerAdapter {
                 event.getChannel().sendMessage("Mention any user you want to ban").queue();
                 return;
             }
-            Member target = event.getMessage().getMentionedMembers().get(0);
+            Member target = event.getMessage().getMentions().getMembers().get(0);
             assert member != null;
             if (!(member.hasPermission(permissions))) {
                 event.getChannel().sendMessage("You do not have permission to ban that person").queue();
@@ -56,7 +56,7 @@ public class BanCommand extends ListenerAdapter {
                 reason = message[2];
             }
             try {
-                Objects.requireNonNull(event.getGuild().getMemberById(target.getIdLong())).ban(5).reason(reason)
+                Objects.requireNonNull(event.getGuild().getMemberById(target.getIdLong())).ban(5, null).reason(reason)
                         .complete();
                 event.getChannel()
                         .sendMessageFormat("%s has been banned \n" + "Reason - %s", target.getEffectiveName(), reason)

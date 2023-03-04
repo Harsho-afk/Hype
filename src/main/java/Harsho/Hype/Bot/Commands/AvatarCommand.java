@@ -36,7 +36,7 @@ public class AvatarCommand extends ListenerAdapter {
                 embedBuilder.clear();
                 return;
             }
-            Member member = event.getMessage().getMentionedMembers().get(0);
+            Member member = event.getMessage().getMentions().getMembers().get(0);
             if (member == null) {
                 url = event.getAuthor().getEffectiveAvatarUrl();
                 embedBuilder.setColor(Color.red);

@@ -35,7 +35,7 @@ public class UnMuteCommand extends ListenerAdapter {
                 event.getChannel().sendMessage("Mention any user you want to unmute").queue();
                 return;
             }
-            Member target = event.getMessage().getMentionedMembers().get(0);
+            Member target = event.getMessage().getMentions().getMembers().get(0);
             assert member != null;
             if (!(member.hasPermission(permissions))) {
                 event.getChannel().sendMessage("You do not have permission to unmute that person").queue();

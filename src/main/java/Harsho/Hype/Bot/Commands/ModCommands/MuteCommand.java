@@ -5,7 +5,7 @@ import Harsho.Hype.Bot.Storage;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Role;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
@@ -42,7 +42,7 @@ public class MuteCommand extends ListenerAdapter {
                 event.getChannel().sendMessage("Mention any user you want to mute").queue();
                 return;
             }
-            Member target = event.getMessage().getMentionedMembers().get(0);
+            Member target = event.getMessage().getMentions().getMembers().get(0);
             assert member != null;
             if (!(member.hasPermission(permissions))) {
                 event.getChannel().sendMessage("You do not have permission to mute that person").queue();

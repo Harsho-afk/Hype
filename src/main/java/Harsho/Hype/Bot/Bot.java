@@ -25,7 +25,7 @@ public class Bot extends ListenerAdapter {
         user = dotenv.get("USER");
         password = dotenv.get("PASS");
         DataSource.readDataBase();
-        JDABuilder.createDefault(token).setStatus(OnlineStatus.IDLE).enableIntents(GatewayIntent.GUILD_MEMBERS)
+        JDABuilder.createDefault(token).setStatus(OnlineStatus.IDLE).enableIntents(GatewayIntent.GUILD_MEMBERS).enableIntents(GatewayIntent.MESSAGE_CONTENT)
                 .setChunkingFilter(ChunkingFilter.ALL).addEventListeners(new Listener())
                 .addEventListeners(new BotReadyEvent()).build();
     }

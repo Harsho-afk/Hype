@@ -5,7 +5,7 @@ import Harsho.Hype.Bot.MySQL.UpdateData;
 import Harsho.Hype.Bot.Storage;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
-import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.channel.Channel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
@@ -42,7 +42,7 @@ public class SetLogCommand extends ListenerAdapter {
                 event.getChannel().sendMessage("Mention the channel").queue();
                 return;
             }
-            TextChannel logChannel = event.getMessage().getMentionedChannels().get(0);
+            Channel logChannel = event.getMessage().getMentions().getChannels().get(0);
             try {
                 UpdateData.updateLog(guildID, logChannel.getIdLong());
                 event.getChannel().sendMessage("Log channel has been set to " + logChannel.getAsMention()).queue();
