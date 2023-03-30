@@ -16,8 +16,7 @@ public class Bot extends ListenerAdapter {
     private String token;
     public static String host;
     public static String user;
-    public static String password; 
-    
+    public static String password;
 
     Bot() throws LoginException {
         Dotenv dotenv = Dotenv.load();
@@ -26,7 +25,8 @@ public class Bot extends ListenerAdapter {
         user = dotenv.get("USER");
         password = dotenv.get("PASS");
         DataSource.readDataBase();
-        JDABuilder.createDefault(token).setStatus(OnlineStatus.IDLE).enableIntents(GatewayIntent.GUILD_MEMBERS).enableIntents(GatewayIntent.MESSAGE_CONTENT)
+        JDABuilder.createDefault(token).setStatus(OnlineStatus.IDLE).enableIntents(GatewayIntent.GUILD_MEMBERS)
+                .enableIntents(GatewayIntent.MESSAGE_CONTENT)
                 .setChunkingFilter(ChunkingFilter.ALL).addEventListeners(new Listener())
                 .addEventListeners(new BotReadyEvent()).build();
     }
