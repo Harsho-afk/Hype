@@ -16,7 +16,8 @@ public class Bot extends ListenerAdapter {
     private String token;
     public static String host;
     public static String user;
-    public static String password;
+    public static String password; 
+    
 
     Bot() throws LoginException {
         Dotenv dotenv = Dotenv.load();
