@@ -5,7 +5,7 @@ import net.dv8tion.jda.api.events.guild.member.GuildMemberRemoveEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 
-import Harsho.Hype.Bot.MySQL.GetData;
+import Harsho.Hype.Bot.Database.GetData;
 
 import java.util.Objects;
 

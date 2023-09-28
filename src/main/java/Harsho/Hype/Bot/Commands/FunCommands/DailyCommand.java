@@ -4,8 +4,8 @@ import java.sql.Timestamp;
 
 import Harsho.Hype.Bot.Storage;
 import Harsho.Hype.Bot.TimeConverter;
-import Harsho.Hype.Bot.MySQL.GetData;
-import Harsho.Hype.Bot.MySQL.UpdateData;
+import Harsho.Hype.Bot.Database.GetData;
+import Harsho.Hype.Bot.Database.UpdateData;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 

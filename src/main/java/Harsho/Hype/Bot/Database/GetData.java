@@ -1,4 +1,4 @@
-package Harsho.Hype.Bot.MySQL;
+package Harsho.Hype.Bot.Database;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +10,7 @@ import Harsho.Hype.Bot.Bot;
 public class GetData {
     public static int getAmount(long memberID) {
         try (PreparedStatement preparedStatement = DataSource.connect
-                .prepareStatement("select amount " + "from members " + "where memberID = ?;")) {
+                .prepareStatement("SELECT amount FROM members WHERE memberID = ?;")) {
             preparedStatement.setLong(1, memberID);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -20,7 +20,7 @@ public class GetData {
             }
 
             try (PreparedStatement preparedStatement1 = DataSource.connect
-                    .prepareStatement("insert into " + "members (memberID) " + "values (?)")) {
+                    .prepareStatement("INSERT INTO members(memberID) VALUES(?)")) {
                 preparedStatement1.setLong(1, memberID);
             }
         } catch (SQLException e) {
@@ -31,7 +31,7 @@ public class GetData {
 
     public static Long getLogID(long guildID) {
         try (PreparedStatement preparedStatement = DataSource.connect
-                .prepareStatement("select channelID " + "from guilds " + "where guildID = ?;")) {
+                .prepareStatement("SELECT channelID FROM guilds WHERE guildID = ?;")) {
             preparedStatement.setLong(1, guildID);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -41,7 +41,7 @@ public class GetData {
             }
 
             try (PreparedStatement insertStatement = DataSource.connect
-                    .prepareStatement("insert into " + "guilds (guildID) " + "values (?)")) {
+                    .prepareStatement("INSERT INTO guilds(guildID) VALUES(?)")) {
                 insertStatement.setLong(1, guildID);
                 insertStatement.execute();
             }
@@ -53,7 +53,7 @@ public class GetData {
 
     public static boolean getJoin(long guildID) {
         try (PreparedStatement preparedStatement = DataSource.connect
-                .prepareStatement("select memberJoin " + "from guilds " + "where guildID = ?")) {
+                .prepareStatement("SELECT memberJoin FROM guilds WHERE guildID = ?")) {
             preparedStatement.setLong(1, guildID);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -63,7 +63,7 @@ public class GetData {
             }
 
             try (PreparedStatement insertStatement = DataSource.connect
-                    .prepareStatement("insert into guilds (guildID) " + "values (?)")) {
+                    .prepareStatement("INSERT INTO guilds(guildID) VALUES(?)")) {
                 insertStatement.setLong(1, guildID);
                 insertStatement.execute();
             }
@@ -75,7 +75,7 @@ public class GetData {
 
     public static boolean getLeave(long guildID) {
         try (PreparedStatement preparedStatement = DataSource.connect
-                .prepareStatement("select memberLeave " + "from guilds " + "where guildID = ?")) {
+                .prepareStatement("SELECT memberLeave FROM guilds WHERE guildID = ?")) {
             preparedStatement.setLong(1, guildID);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -85,7 +85,7 @@ public class GetData {
             }
 
             try (PreparedStatement insertStatement = DataSource.connect
-                    .prepareStatement("insert into guilds (guildID) " + "values (?)")) {
+                    .prepareStatement("INSERT INTO guilds(guildID) VALUES(?)")) {
                 insertStatement.setLong(1, guildID);
                 insertStatement.execute();
             }
@@ -97,7 +97,7 @@ public class GetData {
 
     public static String getPrefix(long guildID) {
         try (PreparedStatement preparedStatement = DataSource.connect
-                .prepareStatement("select prefix " + "from guilds " + "where guildID = ?;")) {
+                .prepareStatement("SELECT prefix FROM guilds WHERE guildID = ?;")) {
             preparedStatement.setLong(1, guildID);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -107,7 +107,7 @@ public class GetData {
             }
 
             try (PreparedStatement insertStatement = DataSource.connect
-                    .prepareStatement("insert into " + "guilds (guildID) " + "values (?);")) {
+                    .prepareStatement("INSERT INTO guilds(guildID) VALUES(?);")) {
                 insertStatement.setLong(1, guildID);
 
                 insertStatement.execute();
@@ -121,12 +121,12 @@ public class GetData {
     public static boolean subtime(long memberID, Timestamp time) {
         long finalTimestamp = Timestamp.valueOf("1000-01-01 00:00:00").getTime();
         try (PreparedStatement preparedStatement = DataSource.connect
-                .prepareStatement("select subtime(?, '240000') AS finaltime")) {
-            preparedStatement.setTimestamp(1, time);
+                .prepareStatement("SELECT ROUND(? - 8.64e+7) AS finaltime")) {
+            preparedStatement.setLong(1, time.getTime());
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
-                    finalTimestamp = resultSet.getTimestamp("finaltime").getTime();
+                    finalTimestamp = resultSet.getLong("finaltime");
                 }
             }
         } catch (Exception e) {
@@ -145,7 +145,7 @@ public class GetData {
 
     public static Timestamp getTime(long memberID) {
         try (PreparedStatement preparedStatement = DataSource.connect
-                .prepareStatement("select lastDaily from members where memberID = ?")) {
+                .prepareStatement("SELECT lastDaily FROM members WHERE memberID = ?")) {
             preparedStatement.setLong(1, memberID);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -155,7 +155,7 @@ public class GetData {
             }
 
             try (PreparedStatement preparedStatement1 = DataSource.connect
-                    .prepareStatement("insert into members (memberID) values (?)")) {
+                    .prepareStatement("INSERT INTO members(memberID) VALUES(?)")) {
                 preparedStatement1.setLong(1, memberID);
             }
         } catch (Exception e) {
@@ -165,7 +165,7 @@ public class GetData {
     }
 
     public static int getStreak(long memberID) {
-        try (PreparedStatement preparedStatement = DataSource.connect.prepareStatement("select streak from members where memberID = ?")){
+        try (PreparedStatement preparedStatement = DataSource.connect.prepareStatement("SELECT streak FROM members WHERE memberID = ?")){
             preparedStatement.setLong(1, memberID);
 
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -175,7 +175,7 @@ public class GetData {
             }
 
             try (PreparedStatement preparedStatement1 = DataSource.connect
-                    .prepareStatement("insert into members (memberID) values (?)")) {
+                    .prepareStatement("INSERT INTO members(memberID) VALUES(?)")) {
                 preparedStatement1.setLong(1, memberID);
             }    
         } catch (Exception e) {

@@ -1,8 +1,8 @@
 package Harsho.Hype.Bot.Events.BotEvents;
 
-import Harsho.Hype.Bot.MySQL.DataSource;
-import Harsho.Hype.Bot.MySQL.GetData;
 import Harsho.Hype.Bot.Storage;
+import Harsho.Hype.Bot.Database.DataSource;
+import Harsho.Hype.Bot.Database.GetData;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.session.ReadyEvent;
@@ -31,13 +31,13 @@ public class BotReadyEvent extends ListenerAdapter {
             String name = Objects.requireNonNull(event.getJDA().getGuildById(guildID)).getName();
             List<Member> guildMembers = guild.getMembers();
             try (PreparedStatement preparedStatement = DataSource.connect
-                    .prepareStatement("update guilds " + "set name = ? " + "where guildID = ?")) {
+                    .prepareStatement("UPDATE guilds SET name = ? WHERE guildID = ?")) {
                 preparedStatement.setString(1, name);
                 preparedStatement.setLong(2, guildID);
                 preparedStatement.executeUpdate();
                 for (Member member : guildMembers) {
                     try (PreparedStatement preparedStatement1 = DataSource.connect
-                            .prepareStatement("insert ignore into members(name, memberID) " + "values(?, ?)")) {
+                            .prepareStatement("INSERT OR IGNORE INTO members(name, memberID) VALUES(?, ?)")) {
                         preparedStatement1.setString(1, member.getEffectiveName());
                         preparedStatement1.setLong(2, member.getIdLong());
                         preparedStatement1.execute();
@@ -50,9 +50,9 @@ public class BotReadyEvent extends ListenerAdapter {
         // guilds
         int num = 0;
         try (Statement statement = DataSource.connect.createStatement()) {
-            try (ResultSet resultSet = statement.executeQuery("select count(id) " + "from guilds;")) {
+            try (ResultSet resultSet = statement.executeQuery("SELECT COUNT(id) FROM guilds;")) {
                 if (resultSet.next()) {
-                    num = resultSet.getInt("count(id)");
+                    num = resultSet.getInt("COUNT(id)");
                 }
             }
         } catch (SQLException e) {
@@ -60,7 +60,7 @@ public class BotReadyEvent extends ListenerAdapter {
         }
         for (int i = 1; i <= num; i++) {
             try (PreparedStatement preparedStatement = DataSource.connect
-                    .prepareStatement("select guildID " + "from guilds " + "where id = ?;")) {
+                    .prepareStatement("SELECT guildID FROM guilds WHERE id = ?;")) {
                 preparedStatement.setInt(1, i);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     if (resultSet.next()) {
@@ -72,7 +72,7 @@ public class BotReadyEvent extends ListenerAdapter {
                     }
                 }
                 try (Statement statement = DataSource.connect.createStatement()) {
-                    statement.execute("select id " + "from guilds " + "order by id ASC;");
+                    statement.execute("SELECT id FROM guilds ORDER BY id ASC;");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

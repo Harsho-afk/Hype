@@ -4,7 +4,7 @@ import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 
-import Harsho.Hype.Bot.MySQL.GetData;
+import Harsho.Hype.Bot.Database.GetData;
 
 public class MemberJoinEvent extends ListenerAdapter {
     @Override

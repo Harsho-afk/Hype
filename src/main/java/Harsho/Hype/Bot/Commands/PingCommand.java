@@ -1,7 +1,7 @@
 package Harsho.Hype.Bot.Commands;
 
 import Harsho.Hype.Bot.Storage;
-import Harsho.Hype.Bot.MySQL.GetData;
+import Harsho.Hype.Bot.Database.GetData;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;

@@ -27,3 +27,6 @@ docs/gradle-getting-started
 docs/tmp
 .vscode/
 .vs/
+
+### Database ###
+*.db

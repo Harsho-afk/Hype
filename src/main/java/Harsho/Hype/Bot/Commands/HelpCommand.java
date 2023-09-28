@@ -4,7 +4,7 @@ import Harsho.Hype.Bot.Commands.ConfigCommands.*;
 import Harsho.Hype.Bot.Commands.FunCommands.*;
 import Harsho.Hype.Bot.Commands.LogCommands.*;
 import Harsho.Hype.Bot.Commands.ModCommands.*;
-import Harsho.Hype.Bot.MySQL.GetData;
+import Harsho.Hype.Bot.Database.GetData;
 import Harsho.Hype.Bot.Storage;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
