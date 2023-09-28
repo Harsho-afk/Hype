@@ -30,3 +30,4 @@ docs/tmp
 
 ### Database ###
 *.db
+*.db-journal
