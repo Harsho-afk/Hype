@@ -1,3 +1,3 @@
 # Hype
 
-Discord bot by Harsho
+Discord bot by me :)
