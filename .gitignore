@@ -16,3 +16,4 @@ replay_pid*
 *.db
 .env
 target
+*.db-journel
