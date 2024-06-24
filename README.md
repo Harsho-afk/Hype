@@ -69,7 +69,7 @@ To run the bot yourself with your Discord Bot :
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/Harsho-afk/Hype.git
    ```
 2. Create a `.env` file and enter your token
    ```
