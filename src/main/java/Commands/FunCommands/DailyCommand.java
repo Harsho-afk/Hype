@@ -1,9 +1,10 @@
 package Commands.FunCommands;
 
 import java.sql.Timestamp;
+import java.time.Duration;
+import java.time.LocalDateTime;
 
 import Systems.Storage;
-import Systems.TimeConverter;
 import Database.GetData;
 import Database.UpdateData;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -25,21 +26,29 @@ public class DailyCommand extends ListenerAdapter {
         prefix = GetData.getPrefix(guildID);
         Storage.PREFIXES.put(guildID, prefix);
         if (message[0].equalsIgnoreCase(prefix + "daily")) {
-            if (GetData.subtime(event.getMember().getIdLong(), new Timestamp(System.currentTimeMillis()))) {
+            Timestamp lastDaily = GetData.getTime(event.getMember().getIdLong());
+            Timestamp now = new Timestamp(System.currentTimeMillis());
+
+            if (lastDaily == null || Duration.between(lastDaily.toLocalDateTime(), now.toLocalDateTime()).toHours() >= 24) {
                 int streak = GetData.getStreak(event.getMember().getIdLong());
                 UpdateData.updateStreak(event.getMember().getIdLong(), (streak + 1));
                 UpdateData.updateAmount(event.getMember().getIdLong(), (GetData.getAmount(event.getMember().getIdLong())
                         + 10 * (GetData.getStreak(event.getMember().getIdLong()))));
-                UpdateData.updateTime(event.getMember().getIdLong(), new Timestamp(System.currentTimeMillis()));
-                int ammount = GetData.getAmount(event.getMember().getIdLong());
+                UpdateData.updateTime(event.getMember().getIdLong(), now);
+                int amount = GetData.getAmount(event.getMember().getIdLong());
                 streak = GetData.getStreak(event.getMember().getIdLong());
-                event.getChannel().sendMessageFormat("You got %d cash. Streak - %s", ammount, streak).queue();
+                event.getChannel().sendMessageFormat("You got %d cash. Streak - %s", amount, streak).queue();
             } else {
+                Duration timeSinceLastDaily = Duration.between(lastDaily.toLocalDateTime(), now.toLocalDateTime());
+                Duration timeLeft = Duration.ofHours(24).minus(timeSinceLastDaily);
+
+                long hours = timeLeft.toHours();
+                long minutes = timeLeft.toMinutesPart();
+                long seconds = timeLeft.toSecondsPart();
+
                 event.getChannel()
-                        .sendMessageFormat("Come after %s. Streak - %d",
-                                TimeConverter.diffHours(GetData.getTime(event.getMember().getIdLong()),
-                                        new Timestamp(System.currentTimeMillis())),
-                                GetData.getStreak(event.getMember().getIdLong()))
+                        .sendMessageFormat("Come after %d hrs %d min %d sec. Streak - %d",
+                                Math.max(0, hours), Math.max(0, minutes), Math.max(0, seconds), GetData.getStreak(event.getMember().getIdLong()))
                         .queue();
             }
         }
