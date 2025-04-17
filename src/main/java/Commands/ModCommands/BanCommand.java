@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 public class BanCommand extends ListenerAdapter {
     private static String prefix;
@@ -56,7 +57,7 @@ public class BanCommand extends ListenerAdapter {
                 reason = message[2];
             }
             try {
-                Objects.requireNonNull(event.getGuild().getMemberById(target.getIdLong())).ban(5, null).reason(reason)
+                Objects.requireNonNull(event.getGuild().getMemberById(target.getIdLong())).ban(5, TimeUnit.DAYS).reason(reason)
                         .complete();
                 event.getChannel()
                         .sendMessageFormat("%s has been banned \n" + "Reason - %s", target.getEffectiveName(), reason)
