@@ -1,7 +1,7 @@
-package Harsho.Hype.Bot.Commands.ModCommands;
+package Commands.ModCommands;
 
-import Harsho.Hype.Bot.Storage;
-import Harsho.Hype.Bot.Database.GetData;
+import Systems.Storage;
+import Database.GetData;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;

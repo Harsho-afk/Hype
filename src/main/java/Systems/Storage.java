@@ -1,4 +1,4 @@
-package Harsho.Hype.Bot;
+package Systems;
 
 import java.util.HashMap;
 import java.util.Map;

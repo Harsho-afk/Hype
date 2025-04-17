@@ -1,8 +1,8 @@
-package Harsho.Hype.Bot.Events.BotEvents;
+package Events.BotEvents;
 
-import Harsho.Hype.Bot.Storage;
-import Harsho.Hype.Bot.Database.DataSource;
-import Harsho.Hype.Bot.Database.GetData;
+import Systems.Storage;
+import Database.DataSource;
+import Database.GetData;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.session.ReadyEvent;

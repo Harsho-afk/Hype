@@ -1,11 +1,11 @@
-package Harsho.Hype.Bot.Systems;
+package Systems;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import Harsho.Hype.Bot.Database.GetData;
-import Harsho.Hype.Bot.Database.UpdateData;
+import Database.GetData;
+import Database.UpdateData;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;

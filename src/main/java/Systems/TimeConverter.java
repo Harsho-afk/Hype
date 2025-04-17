@@ -1,4 +1,4 @@
-package Harsho.Hype.Bot;
+package Systems;
 
 import java.sql.Timestamp;
 

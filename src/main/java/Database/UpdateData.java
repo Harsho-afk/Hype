@@ -1,10 +1,10 @@
-package Harsho.Hype.Bot.Database;
+package Database;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
-import Harsho.Hype.Bot.Storage;
+import Systems.Storage;
 
 public class UpdateData {
     public static void updateAmount(long memberID, int amount) {

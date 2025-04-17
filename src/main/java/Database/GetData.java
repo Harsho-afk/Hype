@@ -1,11 +1,11 @@
-package Harsho.Hype.Bot.Database;
+package Database;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
-import Harsho.Hype.Bot.Bot;
+import Systems.Bot;
 
 public class GetData {
     public static int getAmount(long memberID) {

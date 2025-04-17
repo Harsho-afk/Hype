@@ -17,3 +17,7 @@ replay_pid*
 .env
 target
 *.db-journel
+.classpath
+.project
+.settings
+dependency-reduced-pom.xml

@@ -1,8 +1,8 @@
-package Harsho.Hype.Bot.Commands.LogCommands;
+package Commands.LogCommands;
 
-import Harsho.Hype.Bot.Storage;
-import Harsho.Hype.Bot.Database.GetData;
-import Harsho.Hype.Bot.Database.UpdateData;
+import Systems.Storage;
+import Database.GetData;
+import Database.UpdateData;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.channel.Channel;

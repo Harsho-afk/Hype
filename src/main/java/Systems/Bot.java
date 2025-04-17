@@ -1,7 +1,7 @@
-package Harsho.Hype.Bot;
+package Systems;
 
-import Harsho.Hype.Bot.Database.DataSource;
-import Harsho.Hype.Bot.Events.BotEvents.BotReadyEvent;
+import Database.DataSource;
+import Events.BotEvents.BotReadyEvent;
 import io.github.cdimascio.dotenv.Dotenv;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -9,6 +9,7 @@ import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.ChunkingFilter;
+import net.dv8tion.jda.api.utils.MemberCachePolicy;
 
 import javax.security.auth.login.LoginException;
 
@@ -28,6 +29,10 @@ public class Bot extends ListenerAdapter {
                 .addEventListeners(new Listener())
                 .addEventListeners(new BotReadyEvent())
                 .setActivity(Activity.playing("Type /ping"))
+                .enableIntents(GatewayIntent.GUILD_MESSAGES, GatewayIntent.MESSAGE_CONTENT,
+                        GatewayIntent.GUILD_MESSAGES,GatewayIntent.GUILD_MEMBERS)
+                .setMemberCachePolicy(MemberCachePolicy.ALL)
+                .setChunkingFilter(ChunkingFilter.ALL)
                 .build();
     }
 

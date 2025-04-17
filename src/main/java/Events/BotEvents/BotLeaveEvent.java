@@ -1,7 +1,7 @@
-package Harsho.Hype.Bot.Events.BotEvents;
+package Events.BotEvents;
 
-import Harsho.Hype.Bot.Storage;
-import Harsho.Hype.Bot.Database.DataSource;
+import Systems.Storage;
+import Database.DataSource;
 import net.dv8tion.jda.api.events.guild.GuildLeaveEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;

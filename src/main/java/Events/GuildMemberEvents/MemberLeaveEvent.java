@@ -1,11 +1,11 @@
-package Harsho.Hype.Bot.Events.GuildMemberEvents;
+package Events.GuildMemberEvents;
 
 import net.dv8tion.jda.api.entities.channel.concrete.TextChannel;
 import net.dv8tion.jda.api.events.guild.member.GuildMemberRemoveEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 
-import Harsho.Hype.Bot.Database.GetData;
+import Database.GetData;
 
 import java.util.Objects;
 

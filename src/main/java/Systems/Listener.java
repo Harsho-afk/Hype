@@ -1,12 +1,12 @@
-package Harsho.Hype.Bot;
+package Systems;
 
-import Harsho.Hype.Bot.Commands.*;
-import Harsho.Hype.Bot.Commands.ConfigCommands.*;
-import Harsho.Hype.Bot.Commands.FunCommands.*;
-import Harsho.Hype.Bot.Commands.LogCommands.*;
-import Harsho.Hype.Bot.Commands.ModCommands.*;
-import Harsho.Hype.Bot.Events.BotEvents.*;
-import Harsho.Hype.Bot.Events.GuildMemberEvents.*;
+import Commands.*;
+import Commands.ConfigCommands.*;
+import Commands.FunCommands.*;
+import Commands.LogCommands.*;
+import Commands.ModCommands.*;
+import Events.BotEvents.*;
+import Events.GuildMemberEvents.*;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.events.GenericEvent;
 import net.dv8tion.jda.api.events.session.ReadyEvent;

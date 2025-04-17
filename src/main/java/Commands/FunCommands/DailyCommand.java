@@ -1,11 +1,11 @@
-package Harsho.Hype.Bot.Commands.FunCommands;
+package Commands.FunCommands;
 
 import java.sql.Timestamp;
 
-import Harsho.Hype.Bot.Storage;
-import Harsho.Hype.Bot.TimeConverter;
-import Harsho.Hype.Bot.Database.GetData;
-import Harsho.Hype.Bot.Database.UpdateData;
+import Systems.Storage;
+import Systems.TimeConverter;
+import Database.GetData;
+import Database.UpdateData;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 

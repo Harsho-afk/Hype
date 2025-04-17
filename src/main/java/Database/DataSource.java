@@ -1,6 +1,6 @@
-package Harsho.Hype.Bot.Database;
+package Database;
 
-import Harsho.Hype.Bot.Bot;
+import Systems.Bot;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
