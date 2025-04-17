@@ -32,8 +32,8 @@ public class CoinFlipSys {
             }
         }
         switch (message[1].toLowerCase()) {
+            case "h":
             case "heads":
-                random = rand.nextInt(2);
                 if (message.length < 3) {
                     switch (random) {
                         case 0:
@@ -64,8 +64,8 @@ public class CoinFlipSys {
                                 GetData.getAmount(event.getMember().getIdLong()) - bet);
                         return "Get Rekt Its Tails You lose " + bet + " cash";
                 }
+            case "t":
             case "tails":
-                random = rand.nextInt(2);
                 if (message.length < 3) {
                     switch (random) {
                         case 0:
